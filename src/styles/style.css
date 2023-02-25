@@ -1,0 +1,520 @@
+@import url('web-fonts/stylesheet.css');
+@import url('scrollbar.css');
+
+:root {
+  --green-game: #05520b;
+  --green-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
+}
+
+body {
+  background: url("../img/background.jpg") no-repeat center center fixed;
+}
+
+#logo {
+  vertical-align: middle;
+  border-style: none;
+  width: 500px;
+  position: absolute;
+  margin: 0 auto;
+  top: 20px;
+  left: 0;
+  right: 0;
+}
+
+.player h2 {
+  font-family: 'sarpanchblack', sans-serif;
+  font-size: 60px;
+  color: #000000;
+}
+
+body .modal-content.win-modal .modal-body h6,
+.player.activated h2 {
+  color: var(--green-game);
+  text-shadow: var(--green-shadow);
+}
+
+.player.left h2 {
+  padding-left: 10px;
+}
+
+.player.right h2 {
+  padding-left: 130px;
+}
+
+.player {
+  position: absolute;
+  width: 416px;
+  top: 110px;
+}
+
+.player.left {
+  left: 140px;
+}
+
+.player.right {
+  right: 140px;
+}
+
+.player.unactivated {
+  opacity: .5;
+}
+
+.deck {
+  padding: 10px 0;
+}
+
+.shadow-card {
+  -webkit-box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+  box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+}
+
+._card {
+  display: inline-block;
+  margin: 5px;
+}
+
+.player ._card {
+  margin: 11px;
+}
+
+.player.activated .deck ._card._shadow,
+.player.unactivated .deck ._card {
+  cursor: not-allowed;
+}
+
+._card._shadow {
+  -webkit-box-shadow: 0 0 23px 11px rgba(100, 184, 8, 0.66);
+  -moz-box-shadow: 0 0 23px 11px rgba(100, 184, 8, 0.66);
+  box-shadow: 0 0 23px 11px rgba(100, 184, 8, 0.66);
+  animation: shadows 2s linear infinite;
+}
+
+@keyframes shadows {
+  50% {
+    box-shadow: 0 0 23px 11px rgba(100, 184, 8, 0.1);
+  }
+}
+
+._card._shadow-red {
+  -webkit-box-shadow: 0 0 23px 11px rgba(184, 8, 8, 0.66);;
+  -moz-box-shadow: 0 0 23px 11px rgba(184, 8, 8, 0.66);;
+  box-shadow: 0 0 23px 11px rgba(184, 8, 8, 0.66);;
+}
+
+._card {
+  cursor: crosshair;
+  position: relative;
+}
+
+.modal-body.overflow.pile .cards ._card {
+  margin: 12px;
+  width: 134px;
+  padding: 0;
+}
+
+.pile .cards ._card img {
+  vertical-align: middle;
+  border-style: none;
+  width: 134px;
+}
+
+.pile .cards ._card .badge-light {
+  border-radius: 37px;
+  font-size: 14px;
+  margin-top: -201px;
+  margin-left: 109px;
+  width: 37px;
+}
+
+#draw, #discard {
+  position: absolute;
+  top: 320px;
+  width: 185px;
+  height: 258px;
+}
+
+#draw {
+  left: 620px;
+  background: url('../img/verso.png') no-repeat;
+  text-align: right;
+  cursor: not-allowed;
+}
+
+.player.unactivated .badge-light.numeric {
+  display: none;
+}
+
+.pile .cards ._card .badge-light.alpha {
+  right: 40px;
+  top: 268px;
+  border-radius: 0 !important;
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  font-size: 50px;
+  padding: 18px 0 0 0;
+  text-align: center;
+  width: 53px;
+  height: 57px;
+  line-height: 20px;
+  vertical-align: middle;
+  animation: blinker-alpha 1s linear infinite;
+  opacity: .4;
+  background-color: #4c4b4b;
+  color: #fff;
+  border: 1px solid #1a1a1a;
+}
+
+.badge-light.numeric {
+  right: 17px;
+  top: 18px;
+  animation: blinker-numeric 1s linear infinite;
+  opacity: .3;
+  border: 1px #000 solid;
+  background-color: var(--green-game);
+}
+.badge-light.alpha,
+.badge-light.numeric {
+  position: absolute;
+  color: #fff;
+}
+
+@keyframes blinker-numeric {
+  50% {
+    opacity: .1;
+  }
+}
+
+@keyframes blinker-alpha {
+  50% {
+    opacity: .6;
+  }
+}
+
+.pile .badge-light,
+#draw .badge-light,
+#discard .badge-light {
+  color: #fff;
+  background-color: var(--green-game);
+  border-radius: 40px;
+  font-size: 20px;
+  line-height: inherit;
+  margin-top: -12px;
+  margin-left: 160px;
+  display: block;
+  width: 48px;
+  border: 4px solid #fff;
+  position: absolute;
+  font-family: 'sarpanchblack', sans-serif;
+  padding-left: 7px;
+}
+
+#discard {
+  right: 620px;
+}
+
+.player.unactivated ._card {
+  cursor: default;
+}
+
+#draw ._card,
+#discard ._card {
+  display: none;
+}
+
+.unselected {
+  opacity: .5;
+}
+
+.title-inline-block {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#discard span.option {
+  margin-left: 164px;
+  padding-left: 6px;
+  padding-top: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  margin-top: 39px;
+  font-size: 19px;
+  cursor: crosshair;
+}
+
+#discard .discard-skull {
+  margin-left: 43px;
+  margin-top: 65px;
+  font-size: 120px;
+  filter: drop-shadow(1px 5px 8px var(--green-game));
+  opacity: 0.7;
+}
+
+.modal-header svg.svg-inline--fa {
+  vertical-align: middle;
+  line-height: 25px;
+  display: inline-block;
+  height: 32px;
+}
+
+button.confirm,
+button.confirm:hover {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  border: 1px #032505 solid !important;
+}
+
+button.confirm:disabled,
+button.confirm {
+  background-color: var(--green-game) !important;
+  color: #0e8718 !important;
+  border: 1px #032505 solid !important;
+}
+
+button.confirm.disabled,
+button.confirm:focus,
+button.confirm:active,
+button.confirm:hover {
+  background-color: #0e8718 !important;
+  color: var(--green-game) !important;
+  border: 1px #032505 solid !important;
+}
+
+button.cancel,
+button.cancel:hover {
+  border: solid black 1px !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+button.cancel {
+  background-color: #333 !important;
+  color: #999 !important;
+}
+
+button.cancel.disabled,
+button.cancel:focus,
+button.cancel:active,
+button.cancel:hover {
+  background-color: #999 !important;
+  color: #333 !important;
+  border: solid black 1px !important;
+}
+
+button.disabled {
+  cursor: not-allowed;
+}
+
+button:focus {
+  box-shadow: none !important;
+}
+
+/* ---------------------------------------------- modal re-design*/
+body .modal {
+  padding: 0 !important;
+}
+
+.modal-dialog.modal-large {
+  max-width: 1664px;
+}
+
+.modal-body {
+  padding: 3em !important;
+}
+
+.modal-body.overflow {
+  overflow: auto;
+  height: auto;
+  padding: 5px !important;
+  max-height: 630px;
+  min-height: 340px;
+}
+
+.modal-body.overflow ._card {
+  margin: 4px;
+}
+
+.modal-title {
+  font-family: 'sarpanchmedium', sans-serif;
+  text-transform: uppercase;
+}
+
+.modal-dialog.large {
+  max-width: 90% !important;
+}
+
+body .modal-content {
+  background-color: #222;
+  -webkit-box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+  box-shadow: 10px 11px 20px -8px rgba(0, 0, 0, 0.66);
+  max-width: 80%;
+  background-clip: unset;
+  border-radius: 0;
+}
+
+body .modal-content.minimalist,
+body .modal-content.gun,
+body .modal-content.knife,
+body .modal-content.anarchist,
+body .modal-content.rations {
+  min-width: 500px;
+}
+
+body .modal-content.generalist {
+  max-width: 95%;
+}
+
+body .modal-content.win-modal {
+  height: 860px;
+}
+
+body .modal-content.win-modal .modal-body {
+  background-image: url("../img/win.jpg");
+  background-position: top right;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+body .modal-content.result-draw div._card,
+body .modal-content.show-discard div._card {
+  cursor: not-allowed;
+}
+
+body .modal-content.show-discard,
+body .modal-content.shovel,
+body .modal-content.win-modal,
+body .modal-content.compass {
+  max-width: 87%;
+}
+
+body .modal-content.result-draw {
+  max-width: 100%;
+}
+
+body .modal-content.win-modal .modal-body h6 {
+  margin: 10px;
+  font-size: 70px;
+  text-align: center;
+  font-family: 'sarpanchextrabold', sans-serif;
+}
+
+body .modal-content.result-draw,
+body .modal-content.generalist,
+body .modal-content.win-modal,
+body .modal-content.compass,
+body .modal-content.show-discard,
+body .modal-content.shovel {
+  margin: 0 auto;
+}
+
+body .modal-title {
+  color: #FFF;
+  padding: 0 10px;
+}
+
+.modal-body h6 {
+  color: #FFF;
+  margin: 10px;
+}
+
+.modal-body.pile {
+  padding: 3em !important;
+}
+
+.modal-body .cards {
+  position: relative;
+  margin: 0 auto;
+}
+
+.modal-body .drawnCard,
+.modal-body .player-deck,
+.modal-body .opponent-deck {
+  width: 50%;
+}
+
+.modal-body .drawnCard.left,
+.modal-body .player-deck {
+  float: left;
+}
+
+.modal-body .drawnCard.left ._card,
+.modal-body .player-deck ._card {
+  float: left;
+}
+
+.modal-body .drawnCard.right,
+.modal-body .opponent-deck {
+  float: right;
+}
+
+.modal-body .drawnCard.right ._card,
+.modal-body .opponent-deck ._card {
+  float: right;
+}
+
+body .modal-header {
+  border-bottom: none;
+  z-index: 9;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.75);
+}
+
+body .modal-footer {
+  border-top: none;
+  z-index: 9;
+  -webkit-box-shadow: 0 -9px 16px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0 -9px 16px 0 rgba(0, 0, 0, 0.75);
+  box-shadow: 0 -9px 16px 0 rgba(0, 0, 0, 0.75);
+}
+
+.modal-header .fa-keyboard {
+  color: #FFF;
+  cursor: crosshair;
+}
+
+.modal-dialog.one-player {
+  width: 440px;
+}
+
+.modal-dialog.one-player .modal-content.player-one,
+.modal-dialog.one-player .modal-content.player-two {
+  height: 730px;
+}
+
+.modal-dialog.one-player .modal-content.knife.player-one,
+.modal-dialog.one-player .modal-content.gun.player-one,
+.modal-dialog.one-player .modal-content.anarchist.player-one,
+.modal-dialog.one-player .modal-content.pacifist.player-one,
+.modal-dialog.one-player .modal-content.minimalist.player-one,
+.modal-dialog.one-player .modal-content.rations.player-one,
+.modal-dialog.one-player .modal-content.energybars.player-one,
+.modal-dialog.one-player .modal-content.player-one {
+  left: -498px;
+}
+
+.modal-dialog.one-player .modal-content.knife.player-two,
+.modal-dialog.one-player .modal-content.gun.player-two,
+.modal-dialog.one-player .modal-content.anarchist.player-two,
+.modal-dialog.one-player .modal-content.pacifist.player-two,
+.modal-dialog.one-player .modal-content.minimalist.player-two,
+.modal-dialog.one-player .modal-content.rations.player-two,
+.modal-dialog.one-player .modal-content.energybars.player-two,
+.modal-dialog.one-player .modal-content.player-two {
+  right: -498px;
+}
+
+.modal-dialog.one-player .modal-content.knife,
+.modal-dialog.one-player .modal-content.gun,
+.modal-dialog.one-player .modal-content.anarchist,
+.modal-dialog.one-player .modal-content.pacifist,
+.modal-dialog.one-player .modal-content.minimalist,
+.modal-dialog.one-player .modal-content.rations,
+.modal-dialog.one-player .modal-content.energybars {
+  max-width: 100%;
+  height: auto;
+}
